@@ -5,7 +5,7 @@ on:
     inputs:
       env:
         description: env
-        default: "dev"
+        default: "qa"
         type: "string"
         required: true
       imageVersion:
@@ -15,7 +15,7 @@ on:
         required: true
       appName:
         description: appName
-        default: "private"
+        default: "flexcub-private-api"
         type: "string"
         required: true
         
