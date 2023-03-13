@@ -17,7 +17,7 @@ spec:
         - name: github-test
           image: ajiqbrainx/front
           ports:
-            - containerPort: 80 
+            - containerPort: 80  
 
 
 
