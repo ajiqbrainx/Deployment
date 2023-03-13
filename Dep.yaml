@@ -1,0 +1,25 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: github-test
+  namespace: flexcub-testing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: github-test
+  template:
+    metadata:
+      labels:
+        app: github-test
+    spec:
+      containers:
+        - name: github-test
+          image: ajiqbrainx/front
+          ports:
+            - containerPort: 80 
+
+
+
+
+            
