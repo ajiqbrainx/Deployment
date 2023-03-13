@@ -1,8 +1,9 @@
 name: DEV
+
 on:
- push:
-    branches :
-      -main    
+  push:
+    branches:
+      - main  
    
 jobs:
   DEPLOY :
