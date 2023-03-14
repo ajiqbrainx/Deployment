@@ -15,7 +15,7 @@ on:
         required: true
       appName:
         description: appName
-        default: "flexcub-private-api"
+        default: "qa-app"
         type: "string"
         required: true
         

@@ -1,23 +1,25 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: github-test
+  name: qa-app
   namespace: flexcub-testing
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: github-test
+      app: qa-app
   template:
     metadata:
       labels:
-        app: github-test
+        app: qa-app
     spec:
       containers:
-        - name: github-test
-          image: ajiqbrainx/front
+        - name: qa-app
+          image: flexcubhub/testing:qa-1
           ports:
             - containerPort: 80  
+      imagePullSecrets:
+        - name: flexcub-secret      
 
 
 

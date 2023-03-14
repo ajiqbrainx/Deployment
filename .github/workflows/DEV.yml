@@ -48,5 +48,5 @@ jobs:
         env :
          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         with:
-         args: set image deployment/private private=${{ steps.meta.outputs.tags }} -n flexcub-testing  
+         args: set image deployment/dev-app dev-app=${{ steps.meta.outputs.tags }} -n flexcub-testing  
    
