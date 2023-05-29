@@ -13,40 +13,41 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14.x'
-      - name: Install npm
-        run: npm install
-      - name: Install Angular CLI
-        run: npm install -g @angular/cli
-      - name: Build Angular project
-        run: npm run dev
-      - name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v4
-        with:
-          images: flexcubhub/testing
-          tags: |
-            type=raw,value=dev-app-{{date 'Y-M-D-T-H-m-s'}}
-      - name: Login to DockerHub
-        if: github.event_name != 'pull_request'
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v2
+#         with:
+#           node-version: '14.x'
+#       - name: Install npm
+#         run: npm install
+#       - name: Install Angular CLI
+#         run: npm install -g @angular/cli
+#       - name: Build Angular project
+#         run: npm run dev
+#       - name: Docker meta
+#         id: meta
+#         uses: docker/metadata-action@v4
+#         with:
+#           images: flexcubhub/testing
+#           tags: |
+#             type=raw,value=dev-app-{{date 'Y-M-D-T-H-m-s'}}
+#       - name: Login to DockerHub
+#         if: github.event_name != 'pull_request'
+#         uses: docker/login-action@v2
+#         with:
+#           username: ${{ secrets.DOCKERHUB_USERNAME }}
+#           password: ${{ secrets.DOCKERHUB_TOKEN }}
+#       - name: Build and push
+#         uses: docker/build-push-action@v3
+#         with:
+#           context: .
+#           push: ${{ github.event_name != 'pull_request' }}
+#           tags: ${{ steps.meta.outputs.tags }}
+#           labels: ${{ steps.meta.outputs.labels }}
       - name: Kuberentes (k8s) cli - kubectl
         uses: actions-hub/kubectl@v1.24.0   
         env :
          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         with:
-         args: set image deployment/dev-app dev-app=${{ steps.meta.outputs.tags }} -n flexcub-testing  
+#          args: set image deployment/dev-app dev-app=${{ steps.meta.outputs.tags }} -n flexcub-testing
+           args: get ns
    
