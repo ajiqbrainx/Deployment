@@ -44,7 +44,7 @@ jobs:
         with:
           images: ${{ inputs.imageVersion }}
           tags: |
-            type=raw,value=${{ inputs.env }}-app-{{date 'Y-M-D-T-H-m'}}qa
+            type=raw,value=${{ inputs.env }}-app-{{date 'Y-M-D-T-H-m-s'}}
       - name: Login to DockerHub
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v2
