@@ -1,4 +1,4 @@
-name: QA and PROD
+name: QA 
 on:
  
  workflow_dispatch:
@@ -10,12 +10,12 @@ on:
         required: true
       imageVersion:
         description: image/imageId
-        default: "flexcubhub/testing"
+        default: "ajiqbrainx/ui"
         type: "string"
         required: true
       appName:
         description: appName
-        default: "qa-app"
+        default: "testing-ui-qa"
         type: "string"
         required: true
         
@@ -44,7 +44,7 @@ jobs:
         with:
           images: ${{ inputs.imageVersion }}
           tags: |
-            type=raw,value=${{ inputs.env }}-app-{{date 'Y-M-D-T-H-m-s'}}
+            type=raw,value=${{ inputs.env }}-app-{{date 'Y-M-D-T-H-m'}}qa
       - name: Login to DockerHub
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v2
